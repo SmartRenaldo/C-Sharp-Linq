@@ -1,0 +1,8 @@
+C:\Projects\Linq\02_LinqWithLists\02_LinqWithLists\bin\Debug\02_LinqWithLists.exe.config
+C:\Projects\Linq\02_LinqWithLists\02_LinqWithLists\bin\Debug\02_LinqWithLists.exe
+C:\Projects\Linq\02_LinqWithLists\02_LinqWithLists\bin\Debug\02_LinqWithLists.pdb
+C:\Projects\Linq\02_LinqWithLists\02_LinqWithLists\obj\Debug\02_LinqWithLists.csproj.AssemblyReference.cache
+C:\Projects\Linq\02_LinqWithLists\02_LinqWithLists\obj\Debug\02_LinqWithLists.csproj.SuggestedBindingRedirects.cache
+C:\Projects\Linq\02_LinqWithLists\02_LinqWithLists\obj\Debug\02_LinqWithLists.csproj.CoreCompileInputs.cache
+C:\Projects\Linq\02_LinqWithLists\02_LinqWithLists\obj\Debug\02_LinqWithLists.exe
+C:\Projects\Linq\02_LinqWithLists\02_LinqWithLists\obj\Debug\02_LinqWithLists.pdb

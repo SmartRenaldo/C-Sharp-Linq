@@ -26,5 +26,41 @@ namespace _02_LinqWithLists
             PatientList.Add(new Patient { Id = 4, Name = "Lora", Gender = "Female", Age = 22, HospitalId = 2 });
             PatientList.Add(new Patient { Id = 5, Name = "Branny", Gender = "Male", Age = 79, HospitalId = 2 });
         }
+
+        public List<Patient> GetMalePatients()
+        {
+            IEnumerable<Patient> malePatients = from patient in PatientList where patient.Gender == "Male" select patient;
+
+            return malePatients.ToList<Patient>();
+        }
+
+        public List<Patient> GetFemalePatients()
+        {
+            IEnumerable<Patient> malePatients = from patient in PatientList where patient.Gender == "Female" select patient;
+
+            return malePatients.ToList<Patient>();
+        }
+
+        /// <summary>
+        /// patients' age <= 30
+        /// </summary>
+        /// <returns></returns>
+        public List<Patient> GetYoungPatients()
+        {
+            IEnumerable<Patient> malePatients = from patient in PatientList where patient.Age <= 30 select patient;
+
+            return malePatients.ToList<Patient>();
+        }
+
+        /// <summary>
+        /// patients' age > 30
+        /// </summary>
+        /// <returns></returns>
+        public List<Patient> GetNotYoungPatients()
+        {
+            IEnumerable<Patient> malePatients = from patient in PatientList where patient.Age > 30 select patient;
+
+            return malePatients.ToList<Patient>();
+        }
     }
 }
