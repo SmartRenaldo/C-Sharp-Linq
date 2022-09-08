@@ -1,0 +1,8 @@
+C:\Users\lumient\source\repos\01_WhatIsLinq\01_WhatIsLinq\bin\Debug\01_WhatIsLinq.exe.config
+C:\Users\lumient\source\repos\01_WhatIsLinq\01_WhatIsLinq\bin\Debug\01_WhatIsLinq.exe
+C:\Users\lumient\source\repos\01_WhatIsLinq\01_WhatIsLinq\bin\Debug\01_WhatIsLinq.pdb
+C:\Users\lumient\source\repos\01_WhatIsLinq\01_WhatIsLinq\obj\Debug\01_WhatIsLinq.csproj.AssemblyReference.cache
+C:\Users\lumient\source\repos\01_WhatIsLinq\01_WhatIsLinq\obj\Debug\01_WhatIsLinq.csproj.SuggestedBindingRedirects.cache
+C:\Users\lumient\source\repos\01_WhatIsLinq\01_WhatIsLinq\obj\Debug\01_WhatIsLinq.csproj.CoreCompileInputs.cache
+C:\Users\lumient\source\repos\01_WhatIsLinq\01_WhatIsLinq\obj\Debug\01_WhatIsLinq.exe
+C:\Users\lumient\source\repos\01_WhatIsLinq\01_WhatIsLinq\obj\Debug\01_WhatIsLinq.pdb
