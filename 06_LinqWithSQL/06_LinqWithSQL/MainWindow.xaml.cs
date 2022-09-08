@@ -21,11 +21,14 @@ namespace _06_LinqWithSQL
     /// </summary>
     public partial class MainWindow : Window
     {
+        LinqWithSqlDataClassesDataContext dataContext;
         public MainWindow()
         {
-            InitializeComponent(); 
-            
+            InitializeComponent();
+
             string connectionString = ConfigurationManager.ConnectionStrings["LinqWithSQL.Properties.Settings.TestingDatabaseConnectionString"].ConnectionString;
+
+            dataContext = new LinqWithSqlDataClassesDataContext(connectionString);
         }
     }
 }
