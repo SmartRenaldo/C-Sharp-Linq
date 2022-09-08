@@ -29,16 +29,16 @@ namespace _03_SortingAndFilteringWithLinq
 
         public List<Patient> GetMalePatientsSortByAge()
         {
-            IEnumerable<Patient> malePatients = from patient in PatientList where patient.Gender == "Male" orderby patient.Age select patient;
+            IEnumerable<Patient> malePatientsSortByAge = from patient in PatientList where patient.Gender == "Male" orderby patient.Age select patient;
 
-            return malePatients.ToList<Patient>();
+            return malePatientsSortByAge.ToList<Patient>();
         }
 
         public List<Patient> GetFemalePatientsSortByAge()
         {
-            IEnumerable<Patient> malePatients = from patient in PatientList where patient.Gender == "Female" orderby patient.Age select patient;
+            IEnumerable<Patient> femalePatientsSortByAge = from patient in PatientList where patient.Gender == "Female" orderby patient.Age select patient;
 
-            return malePatients.ToList<Patient>();
+            return femalePatientsSortByAge.ToList<Patient>();
         }
 
         /// <summary>
@@ -47,9 +47,9 @@ namespace _03_SortingAndFilteringWithLinq
         /// <returns></returns>
         public List<Patient> GetYoungPatientsSortByAge()
         {
-            IEnumerable<Patient> malePatients = from patient in PatientList where patient.Age <= 30 orderby patient.Age select patient;
+            IEnumerable<Patient> youngPatientsSortByAge = from patient in PatientList where patient.Age <= 30 orderby patient.Age select patient;
 
-            return malePatients.ToList<Patient>();
+            return youngPatientsSortByAge.ToList<Patient>();
         }
 
         /// <summary>
@@ -58,9 +58,29 @@ namespace _03_SortingAndFilteringWithLinq
         /// <returns></returns>
         public List<Patient> GetNotYoungPatientsSortByAge()
         {
-            IEnumerable<Patient> malePatients = from patient in PatientList where patient.Age > 30 orderby patient.Age select patient;
+            IEnumerable<Patient> notYoungPatientsSortByAge = from patient in PatientList where patient.Age > 30 orderby patient.Age select patient;
 
-            return malePatients.ToList<Patient>();
+            return notYoungPatientsSortByAge.ToList<Patient>();
+        }
+
+        public List<Patient> GetPatientsFromRAH()
+        {
+            IEnumerable<Patient> patientsFromRAH = from patient in PatientList 
+                                                   join hospital in HospitalList on patient.HospitalId equals hospital.Id
+                                                   where hospital.Name == "Royal Adelaide Hospital"
+                                                   orderby patient.Age select patient;
+
+            return patientsFromRAH.ToList<Patient>();
+        }
+
+        public List<Patient> GetPatientsByHospitalId(int id)
+        {
+            IEnumerable<Patient> patientsFromRAH = from patient in PatientList 
+                                                   join hospital in HospitalList on patient.HospitalId equals hospital.Id
+                                                   where hospital.Id == id
+                                                   orderby patient.Age select patient;
+
+            return patientsFromRAH.ToList<Patient>();
         }
     }
 }

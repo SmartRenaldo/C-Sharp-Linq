@@ -16,6 +16,8 @@ namespace _03_SortingAndFilteringWithLinq
             List<Patient> femalePatientsSortByAge = hospitalHandler.GetFemalePatientsSortByAge();
             List<Patient> youngPatientsSortByAge = hospitalHandler.GetYoungPatientsSortByAge();
             List<Patient> notYoungPatientsSortByAge = hospitalHandler.GetNotYoungPatientsSortByAge();
+            List<Patient> patientsFromRAH = hospitalHandler.GetPatientsFromRAH();
+            List<Patient> patientsByHospitalId = hospitalHandler.GetPatientsByHospitalId(2);
 
             Console.WriteLine("Male PatientsSortByAge:");
 
@@ -43,6 +45,38 @@ namespace _03_SortingAndFilteringWithLinq
             foreach (Patient notYoungPatient in notYoungPatientsSortByAge)
             {
                 notYoungPatient.Print();
+            }
+
+            Console.WriteLine("Patient From RAH:");
+
+            foreach (Patient patientFromRAH in patientsFromRAH)
+            {
+                patientFromRAH.Print();
+            }
+
+            Console.WriteLine("Patient From RSH:");
+
+            foreach (Patient patientByHospitalId in patientsByHospitalId)
+            {
+                patientByHospitalId.Print();
+            }
+
+            int[] ints = { 10, 5, 17, 22, -9 };
+            IEnumerable<int> descInts = from i in ints orderby i descending select i;
+            IEnumerable<int> ascInts = descInts.Reverse();
+
+            Console.WriteLine("Descending ints:");
+
+            foreach (int i in descInts)
+            {
+                Console.WriteLine(i);
+            }
+
+            Console.WriteLine("Ascending ints:");
+
+            foreach (int i in ascInts)
+            {
+                Console.WriteLine(i);
             }
 
             Console.ReadKey();
