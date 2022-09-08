@@ -1,0 +1,8 @@
+C:\Projects\Linq\05_LinqWithXML\05_LinqWithXML\bin\Debug\05_LinqWithXML.exe.config
+C:\Projects\Linq\05_LinqWithXML\05_LinqWithXML\bin\Debug\05_LinqWithXML.exe
+C:\Projects\Linq\05_LinqWithXML\05_LinqWithXML\bin\Debug\05_LinqWithXML.pdb
+C:\Projects\Linq\05_LinqWithXML\05_LinqWithXML\obj\Debug\05_LinqWithXML.csproj.AssemblyReference.cache
+C:\Projects\Linq\05_LinqWithXML\05_LinqWithXML\obj\Debug\05_LinqWithXML.csproj.SuggestedBindingRedirects.cache
+C:\Projects\Linq\05_LinqWithXML\05_LinqWithXML\obj\Debug\05_LinqWithXML.csproj.CoreCompileInputs.cache
+C:\Projects\Linq\05_LinqWithXML\05_LinqWithXML\obj\Debug\05_LinqWithXML.exe
+C:\Projects\Linq\05_LinqWithXML\05_LinqWithXML\obj\Debug\05_LinqWithXML.pdb
