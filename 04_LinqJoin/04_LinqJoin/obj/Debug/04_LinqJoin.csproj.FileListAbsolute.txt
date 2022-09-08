@@ -1,0 +1,8 @@
+C:\Projects\Linq\04_LinqJoin\04_LinqJoin\bin\Debug\04_LinqJoin.exe.config
+C:\Projects\Linq\04_LinqJoin\04_LinqJoin\bin\Debug\04_LinqJoin.exe
+C:\Projects\Linq\04_LinqJoin\04_LinqJoin\bin\Debug\04_LinqJoin.pdb
+C:\Projects\Linq\04_LinqJoin\04_LinqJoin\obj\Debug\04_LinqJoin.csproj.AssemblyReference.cache
+C:\Projects\Linq\04_LinqJoin\04_LinqJoin\obj\Debug\04_LinqJoin.csproj.SuggestedBindingRedirects.cache
+C:\Projects\Linq\04_LinqJoin\04_LinqJoin\obj\Debug\04_LinqJoin.csproj.CoreCompileInputs.cache
+C:\Projects\Linq\04_LinqJoin\04_LinqJoin\obj\Debug\04_LinqJoin.exe
+C:\Projects\Linq\04_LinqJoin\04_LinqJoin\obj\Debug\04_LinqJoin.pdb
