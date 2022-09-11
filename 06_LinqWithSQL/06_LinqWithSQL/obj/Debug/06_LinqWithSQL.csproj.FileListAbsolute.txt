@@ -4,3 +4,13 @@ C:\Projects\Linq\06_LinqWithSQL\06_LinqWithSQL\obj\Debug\MainWindow.g.cs
 C:\Projects\Linq\06_LinqWithSQL\06_LinqWithSQL\obj\Debug\App.g.cs
 C:\Projects\Linq\06_LinqWithSQL\06_LinqWithSQL\obj\Debug\06_LinqWithSQL_MarkupCompile.cache
 C:\Projects\Linq\06_LinqWithSQL\06_LinqWithSQL\obj\Debug\06_LinqWithSQL_MarkupCompile.lref
+C:\Projects\Linq\06_LinqWithSQL\06_LinqWithSQL\bin\Debug\06_LinqWithSQL.exe.config
+C:\Projects\Linq\06_LinqWithSQL\06_LinqWithSQL\bin\Debug\06_LinqWithSQL.exe
+C:\Projects\Linq\06_LinqWithSQL\06_LinqWithSQL\bin\Debug\06_LinqWithSQL.pdb
+C:\Projects\Linq\06_LinqWithSQL\06_LinqWithSQL\obj\Debug\MainWindow.baml
+C:\Projects\Linq\06_LinqWithSQL\06_LinqWithSQL\obj\Debug\06_LinqWithSQL.g.resources
+C:\Projects\Linq\06_LinqWithSQL\06_LinqWithSQL\obj\Debug\_06_LinqWithSQL.Properties.Resources.resources
+C:\Projects\Linq\06_LinqWithSQL\06_LinqWithSQL\obj\Debug\06_LinqWithSQL.csproj.GenerateResource.cache
+C:\Projects\Linq\06_LinqWithSQL\06_LinqWithSQL\obj\Debug\06_LinqWithSQL.csproj.CoreCompileInputs.cache
+C:\Projects\Linq\06_LinqWithSQL\06_LinqWithSQL\obj\Debug\06_LinqWithSQL.exe
+C:\Projects\Linq\06_LinqWithSQL\06_LinqWithSQL\obj\Debug\06_LinqWithSQL.pdb

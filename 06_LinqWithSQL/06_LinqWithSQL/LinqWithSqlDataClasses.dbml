@@ -1,1 +1,19 @@
-﻿
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TestingDatabase" Class="LinqWithSqlDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=RENALDO\HELLOSQLSERVER;Initial Catalog=TestingDatabase;Persist Security Info=True;User ID=renaldo" SettingsObjectName="_06_LinqWithSQL.Properties.Settings" SettingsPropertyName="TestingDatabaseConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Hospital" Member="Hospitals">
+    <Type Name="Hospital">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Hospital_Patient" Member="Patients" ThisKey="Id" OtherKey="HospitalId" Type="Patient" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Patient" Member="Patients">
+    <Type Name="Patient">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Gender" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="HospitalId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Hospital_Patient" Member="Hospital" ThisKey="HospitalId" OtherKey="Id" Type="Hospital" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+</Database>

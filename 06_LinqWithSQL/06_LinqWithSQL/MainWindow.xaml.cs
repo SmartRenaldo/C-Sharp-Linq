@@ -26,9 +26,45 @@ namespace _06_LinqWithSQL
         {
             InitializeComponent();
 
-            string connectionString = ConfigurationManager.ConnectionStrings["LinqWithSQL.Properties.Settings.TestingDatabaseConnectionString"].ConnectionString;
+            string connectionString = ConfigurationManager.ConnectionStrings["_06_LinqWithSQL.Properties.Settings.TestingDatabaseConnectionString"].ConnectionString;
 
             dataContext = new LinqWithSqlDataClassesDataContext(connectionString);
+
+            //InsertHpospital();
+            InsertPatient();
+        }
+
+        public void InsertHpospital()
+        {
+            Hospital rau = new Hospital();
+            rau.Name = "Royal Adelaide Hospital";
+            dataContext.Hospitals.InsertOnSubmit(rau);
+
+            Hospital rsu = new Hospital();
+            rsu.Name = "Royal Sydney Hospital";
+            dataContext.Hospitals.InsertOnSubmit(rsu);
+
+            dataContext.SubmitChanges();
+
+            MainDataGrid.ItemsSource = dataContext.Hospitals;
+        }
+
+        public void InsertPatient()
+        {
+            Hospital rau = dataContext.Hospitals.First(h => h.Name.Equals("Royal Adelaide Hospital"));
+            Hospital rsu = dataContext.Hospitals.First(h => h.Name.Equals("Royal Sydney Hospital"));
+
+            List<Patient> patients = new List<Patient>();
+
+            patients.Add(new Patient { Name = "Nill", Gender = "Male", HospitalId = rau.Id });
+            patients.Add(new Patient { Name = "Timmy", Gender = "Female", HospitalId = rsu.Id });
+            patients.Add(new Patient { Name = "Kolin", Gender = "Male", Hospital = rau });
+            patients.Add(new Patient { Name = "Coco", Gender = "Trans", Hospital = rsu });
+
+            dataContext.Patients.InsertAllOnSubmit(patients);
+            dataContext.SubmitChanges();
+
+            MainDataGrid.ItemsSource = dataContext.Patients;
         }
     }
 }
