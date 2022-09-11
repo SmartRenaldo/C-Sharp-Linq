@@ -13,6 +13,7 @@
       <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Gender" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="HospitalId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Patient_PatientDepartment" Member="PatientDepartments" ThisKey="Id" OtherKey="PatientId" Type="PatientDepartment" />
       <Association Name="Hospital_Patient" Member="Hospital" ThisKey="HospitalId" OtherKey="Id" Type="Hospital" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
@@ -20,6 +21,16 @@
     <Type Name="Department">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Association Name="Department_PatientDepartment" Member="PatientDepartments" ThisKey="Id" OtherKey="DepartmentId" Type="PatientDepartment" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PatientDepartment" Member="PatientDepartments">
+    <Type Name="PatientDepartment">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PatientId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DepartmentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Department_PatientDepartment" Member="Department" ThisKey="DepartmentId" OtherKey="Id" Type="Department" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Patient_PatientDepartment" Member="Patient" ThisKey="PatientId" OtherKey="Id" Type="Patient" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
 </Database>

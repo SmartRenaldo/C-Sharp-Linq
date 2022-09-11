@@ -39,6 +39,9 @@ namespace _06_LinqWithSQL
     partial void InsertDepartment(Department instance);
     partial void UpdateDepartment(Department instance);
     partial void DeleteDepartment(Department instance);
+    partial void InsertPatientDepartment(PatientDepartment instance);
+    partial void UpdatePatientDepartment(PatientDepartment instance);
+    partial void DeletePatientDepartment(PatientDepartment instance);
     #endregion
 		
 		public LinqWithSqlDataClassesDataContext() : 
@@ -92,6 +95,14 @@ namespace _06_LinqWithSQL
 			get
 			{
 				return this.GetTable<Department>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PatientDepartment> PatientDepartments
+		{
+			get
+			{
+				return this.GetTable<PatientDepartment>();
 			}
 		}
 	}
@@ -224,6 +235,8 @@ namespace _06_LinqWithSQL
 		
 		private int _HospitalId;
 		
+		private EntitySet<PatientDepartment> _PatientDepartments;
+		
 		private EntityRef<Hospital> _Hospital;
 		
     #region Extensibility Method Definitions
@@ -242,6 +255,7 @@ namespace _06_LinqWithSQL
 		
 		public Patient()
 		{
+			this._PatientDepartments = new EntitySet<PatientDepartment>(new Action<PatientDepartment>(this.attach_PatientDepartments), new Action<PatientDepartment>(this.detach_PatientDepartments));
 			this._Hospital = default(EntityRef<Hospital>);
 			OnCreated();
 		}
@@ -330,6 +344,19 @@ namespace _06_LinqWithSQL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Patient_PatientDepartment", Storage="_PatientDepartments", ThisKey="Id", OtherKey="PatientId")]
+		public EntitySet<PatientDepartment> PatientDepartments
+		{
+			get
+			{
+				return this._PatientDepartments;
+			}
+			set
+			{
+				this._PatientDepartments.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Hospital_Patient", Storage="_Hospital", ThisKey="HospitalId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public Hospital Hospital
 		{
@@ -383,6 +410,18 @@ namespace _06_LinqWithSQL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void attach_PatientDepartments(PatientDepartment entity)
+		{
+			this.SendPropertyChanging();
+			entity.Patient = this;
+		}
+		
+		private void detach_PatientDepartments(PatientDepartment entity)
+		{
+			this.SendPropertyChanging();
+			entity.Patient = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Department")]
@@ -394,6 +433,8 @@ namespace _06_LinqWithSQL
 		private int _Id;
 		
 		private string _Name;
+		
+		private EntitySet<PatientDepartment> _PatientDepartments;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -407,6 +448,7 @@ namespace _06_LinqWithSQL
 		
 		public Department()
 		{
+			this._PatientDepartments = new EntitySet<PatientDepartment>(new Action<PatientDepartment>(this.attach_PatientDepartments), new Action<PatientDepartment>(this.detach_PatientDepartments));
 			OnCreated();
 		}
 		
@@ -446,6 +488,223 @@ namespace _06_LinqWithSQL
 					this._Name = value;
 					this.SendPropertyChanged("Name");
 					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Department_PatientDepartment", Storage="_PatientDepartments", ThisKey="Id", OtherKey="DepartmentId")]
+		public EntitySet<PatientDepartment> PatientDepartments
+		{
+			get
+			{
+				return this._PatientDepartments;
+			}
+			set
+			{
+				this._PatientDepartments.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_PatientDepartments(PatientDepartment entity)
+		{
+			this.SendPropertyChanging();
+			entity.Department = this;
+		}
+		
+		private void detach_PatientDepartments(PatientDepartment entity)
+		{
+			this.SendPropertyChanging();
+			entity.Department = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PatientDepartment")]
+	public partial class PatientDepartment : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private int _PatientId;
+		
+		private int _DepartmentId;
+		
+		private EntityRef<Department> _Department;
+		
+		private EntityRef<Patient> _Patient;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnPatientIdChanging(int value);
+    partial void OnPatientIdChanged();
+    partial void OnDepartmentIdChanging(int value);
+    partial void OnDepartmentIdChanged();
+    #endregion
+		
+		public PatientDepartment()
+		{
+			this._Department = default(EntityRef<Department>);
+			this._Patient = default(EntityRef<Patient>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PatientId", DbType="Int NOT NULL")]
+		public int PatientId
+		{
+			get
+			{
+				return this._PatientId;
+			}
+			set
+			{
+				if ((this._PatientId != value))
+				{
+					if (this._Patient.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPatientIdChanging(value);
+					this.SendPropertyChanging();
+					this._PatientId = value;
+					this.SendPropertyChanged("PatientId");
+					this.OnPatientIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DepartmentId", DbType="Int NOT NULL")]
+		public int DepartmentId
+		{
+			get
+			{
+				return this._DepartmentId;
+			}
+			set
+			{
+				if ((this._DepartmentId != value))
+				{
+					if (this._Department.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnDepartmentIdChanging(value);
+					this.SendPropertyChanging();
+					this._DepartmentId = value;
+					this.SendPropertyChanged("DepartmentId");
+					this.OnDepartmentIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Department_PatientDepartment", Storage="_Department", ThisKey="DepartmentId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Department Department
+		{
+			get
+			{
+				return this._Department.Entity;
+			}
+			set
+			{
+				Department previousValue = this._Department.Entity;
+				if (((previousValue != value) 
+							|| (this._Department.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Department.Entity = null;
+						previousValue.PatientDepartments.Remove(this);
+					}
+					this._Department.Entity = value;
+					if ((value != null))
+					{
+						value.PatientDepartments.Add(this);
+						this._DepartmentId = value.Id;
+					}
+					else
+					{
+						this._DepartmentId = default(int);
+					}
+					this.SendPropertyChanged("Department");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Patient_PatientDepartment", Storage="_Patient", ThisKey="PatientId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Patient Patient
+		{
+			get
+			{
+				return this._Patient.Entity;
+			}
+			set
+			{
+				Patient previousValue = this._Patient.Entity;
+				if (((previousValue != value) 
+							|| (this._Patient.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Patient.Entity = null;
+						previousValue.PatientDepartments.Remove(this);
+					}
+					this._Patient.Entity = value;
+					if ((value != null))
+					{
+						value.PatientDepartments.Add(this);
+						this._PatientId = value.Id;
+					}
+					else
+					{
+						this._PatientId = default(int);
+					}
+					this.SendPropertyChanged("Patient");
 				}
 			}
 		}

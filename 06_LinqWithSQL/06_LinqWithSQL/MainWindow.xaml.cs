@@ -32,7 +32,8 @@ namespace _06_LinqWithSQL
 
             //InsertHpospital();
             //InsertPatient();
-            InsertDepartments();
+            //InsertDepartments();
+            InsertPatientDepartment();
         }
 
         public void InsertHpospital()
@@ -81,6 +82,23 @@ namespace _06_LinqWithSQL
             dataContext.SubmitChanges();
 
             MainDataGrid.ItemsSource = dataContext.Departments;
+        }
+
+        public void InsertPatientDepartment()
+        {
+            List<PatientDepartment> patientDepartments = new List<PatientDepartment>();
+            Department cardio = dataContext.Departments.First(d => d.Name.Equals("Cardiovascular"));
+            Department dermat = dataContext.Departments.First(d => d.Name.Equals("Dermatology"));
+            List<Patient> patients = dataContext.Patients.ToList();
+
+            patientDepartments.Add(new PatientDepartment { Department = cardio, Patient = patients[0] });
+            patientDepartments.Add(new PatientDepartment { Department = dermat, Patient = patients[1] });
+            patientDepartments.Add(new PatientDepartment { Department = dermat, Patient = patients[2] });
+            patientDepartments.Add(new PatientDepartment { Department = cardio, Patient = patients[3] });
+
+            dataContext.SubmitChanges();
+
+            MainDataGrid.ItemsSource = dataContext.PatientDepartments;
         }
     }
 }
