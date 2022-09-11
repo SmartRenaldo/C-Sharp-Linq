@@ -31,7 +31,8 @@ namespace _06_LinqWithSQL
             dataContext = new LinqWithSqlDataClassesDataContext(connectionString);
 
             //InsertHpospital();
-            InsertPatient();
+            //InsertPatient();
+            InsertDepartments();
         }
 
         public void InsertHpospital()
@@ -65,6 +66,21 @@ namespace _06_LinqWithSQL
             dataContext.SubmitChanges();
 
             MainDataGrid.ItemsSource = dataContext.Patients;
+        }
+
+        public void InsertDepartments()
+        {
+            Department cardio = new Department();
+            cardio.Name = "Cardiovascular";
+            dataContext.Departments.InsertOnSubmit(cardio);
+
+            Department dermat = new Department();
+            dermat.Name = "Dermatology";
+            dataContext.Departments.InsertOnSubmit(dermat);
+
+            dataContext.SubmitChanges();
+
+            MainDataGrid.ItemsSource = dataContext.Departments;
         }
     }
 }
