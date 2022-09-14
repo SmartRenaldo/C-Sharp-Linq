@@ -34,7 +34,7 @@ namespace _06_LinqWithSQL
             //InsertPatient();
             //InsertDepartments();
             //InsertPatientDepartment();
-            GetHospitalOfNill();
+            GetAllHospitalsWithMalePatients();
         }
 
         public void InsertHpospital()
@@ -109,6 +109,35 @@ namespace _06_LinqWithSQL
             List<Hospital> hospitals = new List<Hospital>();
             hospitals.Add(hospital);
             MainDataGrid.ItemsSource = hospitals;
+        }
+
+        public void GetDepartmentOfNill()
+        {
+            Patient Nill = dataContext.Patients.First(p => p.Name.Equals("Nill"));
+            var department = from pd in Nill.PatientDepartments select pd.Department;
+            MainDataGrid.ItemsSource = department;
+        }
+
+        public void GetAllPatientsFromRAH()
+        {
+            var patients = from p in dataContext.Patients where p.Hospital.Name == "Royal Adelaide Hospital" select p;
+            MainDataGrid.ItemsSource = patients;
+        }
+
+        public void GetAllHospitalsWithMalePatients()
+        {
+            var hospitals = from p in dataContext.Patients join h in dataContext.Hospitals 
+                            on p.Hospital equals h where p.Gender == "Male" select h;
+
+            MainDataGrid.ItemsSource = hospitals;
+        }
+
+        public void GetAllDepartmentsFromRAH()
+        {
+            var departments = from p in dataContext.Patients join pd in dataContext.PatientDepartments
+                              on p.Id equals pd.PatientId where p.Hospital.Name == "Royal Adelaide Hospital" select pd.Department;
+
+            MainDataGrid.ItemsSource = departments;
         }
     }
 }
