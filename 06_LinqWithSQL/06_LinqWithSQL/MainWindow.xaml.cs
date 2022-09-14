@@ -33,7 +33,8 @@ namespace _06_LinqWithSQL
             //InsertHpospital();
             //InsertPatient();
             //InsertDepartments();
-            InsertPatientDepartment();
+            //InsertPatientDepartment();
+            GetHospitalOfNill();
         }
 
         public void InsertHpospital()
@@ -99,6 +100,15 @@ namespace _06_LinqWithSQL
             dataContext.SubmitChanges();
 
             MainDataGrid.ItemsSource = dataContext.PatientDepartments;
+        }
+
+        public void GetHospitalOfNill()
+        {
+            Patient Nill = dataContext.Patients.First(p => p.Name.Equals("Nill"));
+            Hospital hospital = Nill.Hospital;
+            List<Hospital> hospitals = new List<Hospital>();
+            hospitals.Add(hospital);
+            MainDataGrid.ItemsSource = hospitals;
         }
     }
 }
