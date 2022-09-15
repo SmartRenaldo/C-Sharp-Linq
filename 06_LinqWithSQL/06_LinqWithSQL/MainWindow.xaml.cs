@@ -34,11 +34,15 @@ namespace _06_LinqWithSQL
             //InsertPatient();
             //InsertDepartments();
             //InsertPatientDepartment();
-            GetAllHospitalsWithMalePatients();
+            //GetAllHospitalsWithMalePatients();
+            //UpdateNill();
+            DeleteFemalePatients();
         }
 
         public void InsertHpospital()
         {
+            dataContext.ExecuteCommand("delete from Hospital");
+
             Hospital rau = new Hospital();
             rau.Name = "Royal Adelaide Hospital";
             dataContext.Hospitals.InsertOnSubmit(rau);
@@ -138,6 +142,23 @@ namespace _06_LinqWithSQL
                               on p.Id equals pd.PatientId where p.Hospital.Name == "Royal Adelaide Hospital" select pd.Department;
 
             MainDataGrid.ItemsSource = departments;
+        }
+
+        public void UpdateNill()
+        {
+            Patient nill = dataContext.Patients.FirstOrDefault(p => p.Name == "Nill");
+
+            nill.Name = "Nillson";
+            dataContext.SubmitChanges();
+            MainDataGrid.ItemsSource = dataContext.Patients;
+        }
+
+        public void DeleteFemalePatients()
+        {
+            IQueryable<Patient> patients = from p in dataContext.Patients where p.Gender == "Female" select p;
+            dataContext.Patients.DeleteAllOnSubmit(patients);
+            dataContext.SubmitChanges();
+            MainDataGrid.ItemsSource = dataContext.Patients;
         }
     }
 }
